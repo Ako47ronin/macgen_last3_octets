@@ -4,7 +4,7 @@ A simple script to generate all the possible last three octects of a mac address
 
 Possible Use Cases:
 
-1.OUI Testing
+1. OUI Testing
 
 2. Wireless Devices Discovery - Just append the manufacturer OUI
    
