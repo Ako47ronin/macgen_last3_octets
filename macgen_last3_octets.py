@@ -63,6 +63,8 @@ def signal_handler(sig, frame):
     print("Keyboard interrupt detected. Exiting...")
     sys.exit(0)
 
+print(banner)
+
 # Parse command-line arguments
 parser = argparse.ArgumentParser(description="Generate all possible last three octets of a MAC address.")
 parser.add_argument("-d", "--delimiter", type=str, default="", help="The delimiter to use between octets. Defaults to no delimiter.")
@@ -73,6 +75,8 @@ args = parser.parse_args()
 signal.signal(signal.SIGINT, signal_handler)
 
 # Generate the last three octets
+print("[+] Generating octects ...
+
 try:
     octets = generate_mac_last_three_octets()
 except KeyboardInterrupt:
