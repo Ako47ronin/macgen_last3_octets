@@ -94,3 +94,4 @@ if args.output is not None:
 	
 else:
     print(output)
+
