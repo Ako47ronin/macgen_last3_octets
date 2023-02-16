@@ -12,6 +12,12 @@ Possible Use Cases:
    Bluetooth Discovery
    
    Wifi Discovery 
+   
+
+# generate_mac_last_three_octets
+The generate_mac_last_three_octets() function uses three nested loops to generate all possible combinations of the last three octets, and appends each combination to the octets list.
+
+It generates all possible combinations of the last three octets from "00:00:00" to "FF:FF:FF":
 
 **Reference**
 
