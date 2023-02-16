@@ -75,12 +75,12 @@ args = parser.parse_args()
 signal.signal(signal.SIGINT, signal_handler)
 
 # Generate the last three octets
-print("[+] Generating octects ...")
+print("[+] Generating octects ..." + "\n")
 
 try:
     octets = generate_mac_last_three_octets()
 except KeyboardInterrupt:
-    print("Keyboard interrupt detected. Exiting...")
+    print("Keyboard interrupt detected. Exiting..." + "\n")
     sys.exit(0)
 
 # Format the output with the specified delimiter
