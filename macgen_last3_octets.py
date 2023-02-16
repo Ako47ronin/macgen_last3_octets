@@ -31,7 +31,7 @@ banner = """
 
 Password Generator v1.0
 Author: Ako
-Email : ako47ron@gmail.com
+Email : ako47ron at gmail.com
 """
 
 def generate_mac_last_three_octets(delimiter=""):
