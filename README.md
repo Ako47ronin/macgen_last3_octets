@@ -1,6 +1,5 @@
 **Mac Address Last 3 Octect Generator**
 
-Mac Generator - Last 3 Octects
 
 A simple script to generate all the possible last three octects of a mac address. This is a simple helper script for OUI manipulations and testing. 
 
