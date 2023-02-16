@@ -1,6 +1,9 @@
 #!/usr/bin/env python3
 
 import argparse
+import itertools
+import signal
+import sys
 
 # Banner and ASCII art logo
 banner = """
@@ -35,25 +38,30 @@ Email : ako47ron at gmail.com
 """
 
 import argparse
+import itertools
+import signal
+import sys
 
-def generate_mac_last_three_octets(delimiter=""):
+def generate_mac_last_three_octets():
     """
     Generates all possible last three octets of a MAC address.
-
-    Args:
-        delimiter (str): The delimiter to use between octets. Defaults to no delimiter.
 
     Returns:
         A list of strings representing the last three octets of a MAC address.
     """
-    octets = []
-    for i in range(256):
-        for j in range(256):
-            for k in range(256):
-                octets.append(f"{i:02X}")
-                octets.append(f"{j:02X}")
-                octets.append(f"{k:02X}")
+    octets = [f"{x:02X}" for x in itertools.product(range(256), repeat=3)]
     return octets
+
+def signal_handler(sig, frame):
+    """
+    Handles the keyboard interrupt signal.
+
+    Args:
+        sig: The signal number.
+        frame: The current stack frame.
+    """
+    print("Keyboard interrupt detected. Exiting...")
+    sys.exit(0)
 
 # Parse command-line arguments
 parser = argparse.ArgumentParser(description="Generate all possible last three octets of a MAC address.")
@@ -61,15 +69,24 @@ parser.add_argument("-d", "--delimiter", type=str, default="", help="The delimit
 parser.add_argument("-o", "--output", type=str, help="The filename to write output to. If not specified, output is printed to screen.")
 args = parser.parse_args()
 
-# Example usage
-octets = generate_mac_last_three_octets(args.delimiter)
-output = ""
-for i in range(0, len(octets), 3):
-    output += args.delimiter.join(octets[i:i+3]) + "\n"
+# Set up keyboard interrupt signal handler
+signal.signal(signal.SIGINT, signal_handler)
 
+# Generate the last three octets
+try:
+    octets = generate_mac_last_three_octets()
+except KeyboardInterrupt:
+    print("Keyboard interrupt detected. Exiting...")
+    sys.exit(0)
+
+# Format the output with the specified delimiter
+output = "\n".join([args.delimiter.join(octets[i:i+3]) for i in range(0, len(octets), 3)])
+
+# Write output to file or print to screen
 if args.output is not None:
     with open(args.output, "w") as f:
         f.write(output)
-    print("Last 3 Mac Octets generated to " + args.output) 
+    print("Last 3 Mac Octets generated to " + args.output)
+    
 else:
     print(output)
