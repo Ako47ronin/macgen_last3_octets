@@ -37,11 +37,6 @@ Author: Ako
 Email : ako47ron at gmail.com
 """
 
-import argparse
-import itertools
-import signal
-import sys
-
 def generate_mac_last_three_octets():
     """
     Generates all possible last three octets of a MAC address.
@@ -49,7 +44,12 @@ def generate_mac_last_three_octets():
     Returns:
         A list of strings representing the last three octets of a MAC address.
     """
-    octets = [f"{x:02X}" for x in itertools.product(range(256), repeat=3)]
+    octets = []
+    for i in range(256):
+        for j in range(256):
+            for k in range(256):
+                octet_str = f"{i:02X}:{j:02X}:{k:02X}"
+                octets.append(octet_str)
     return octets
 
 def signal_handler(sig, frame):
@@ -63,6 +63,8 @@ def signal_handler(sig, frame):
     print("Keyboard interrupt detected. Exiting...")
     sys.exit(0)
 
+print(banner)
+
 # Parse command-line arguments
 parser = argparse.ArgumentParser(description="Generate all possible last three octets of a MAC address.")
 parser.add_argument("-d", "--delimiter", type=str, default="", help="The delimiter to use between octets. Defaults to no delimiter.")
@@ -72,6 +74,8 @@ args = parser.parse_args()
 # Set up keyboard interrupt signal handler
 signal.signal(signal.SIGINT, signal_handler)
 
+
+
 # Generate the last three octets
 try:
     octets = generate_mac_last_three_octets()
@@ -80,13 +84,13 @@ except KeyboardInterrupt:
     sys.exit(0)
 
 # Format the output with the specified delimiter
-output = "\n".join([args.delimiter.join(octets[i:i+3]) for i in range(0, len(octets), 3)])
+output = "\n".join([args.delimiter.join(octet.split(":")) for octet in octets])
 
 # Write output to file or print to screen
 if args.output is not None:
     with open(args.output, "w") as f:
         f.write(output)
-    print("Last 3 Mac Octets generated to " + args.output)
-    
+	print("Last 3 Mac Octets generated to " + args.output)
+	
 else:
     print(output)
