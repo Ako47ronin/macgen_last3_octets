@@ -90,6 +90,6 @@ output = "\n".join([args.delimiter.join(octet.split(":")) for octet in octets])
 if args.output is not None:
     with open(args.output, "w") as f:
         f.write(output)
-    print(f"Output written to {args.output}")
+    print(f"[+] Output written to {args.output}" + "\n")
 else:
     print(output)
