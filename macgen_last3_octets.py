@@ -34,6 +34,8 @@ Author: Ako
 Email : ako47ron at gmail.com
 """
 
+import argparse
+
 def generate_mac_last_three_octets(delimiter=""):
     """
     Generates all possible last three octets of a MAC address.
@@ -46,7 +48,9 @@ def generate_mac_last_three_octets(delimiter=""):
     """
     octets = []
     for i in range(256):
-        octets.append(f"{i:02X}")
+        for j in range(256):
+            for k in range(256):
+                octets.append(f"{i:02X}{j:02X}{k:02X}")
     return octets
 
 # Parse command-line arguments
@@ -55,10 +59,7 @@ parser.add_argument("-d", "--delimiter", type=str, default="", help="The delimit
 parser.add_argument("-o", "--output", type=str, help="The filename to write output to. If not specified, output is printed to screen.")
 args = parser.parse_args()
 
-# Run program
-
-print(banner)
-
+# Example usage
 octets = generate_mac_last_three_octets(args.delimiter)
 output = ""
 for i in range(0, len(octets), 3):
@@ -67,5 +68,6 @@ for i in range(0, len(octets), 3):
 if args.output is not None:
     with open(args.output, "w") as f:
         f.write(output)
+     print("Last 3 Mac Octets generated to " + args.output) 
 else:
     print(output)
