@@ -1,5 +1,7 @@
 # macgen_last3_octets
 
+Mac Generator - Last 3 Octects
+
 A simple script to generate all the possible last three octects of a mac address. This is a simple helper script for OUI manipulations and testing. 
 
 Possible Use Cases:
@@ -12,4 +14,7 @@ Possible Use Cases:
    
    Wifi Discovery 
 
+**Reference**
 
+For OUI List, please see: 
+https://standards-oui.ieee.org/oui/oui.txt
