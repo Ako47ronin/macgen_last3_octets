@@ -50,7 +50,9 @@ def generate_mac_last_three_octets(delimiter=""):
     for i in range(256):
         for j in range(256):
             for k in range(256):
-                octets.append(f"{i:02X}{j:02X}{k:02X}")
+                octets.append(f"{i:02X}")
+                octets.append(f"{j:02X}")
+                octets.append(f"{k:02X}")
     return octets
 
 # Parse command-line arguments
