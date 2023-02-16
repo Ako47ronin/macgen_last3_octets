@@ -90,7 +90,7 @@ output = "\n".join([args.delimiter.join(octet.split(":")) for octet in octets])
 if args.output is not None:
     with open(args.output, "w") as f:
         f.write(output)
-	print("Last 3 Mac Octets generated to " + args.output)
+    print("Last 3 Mac Octets generated to " + args.output)
 	
 else:
     print(output)
