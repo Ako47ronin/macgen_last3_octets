@@ -68,6 +68,6 @@ for i in range(0, len(octets), 3):
 if args.output is not None:
     with open(args.output, "w") as f:
         f.write(output)
-     print("Last 3 Mac Octets generated to " + args.output) 
+    print("Last 3 Mac Octets generated to " + args.output) 
 else:
     print(output)
