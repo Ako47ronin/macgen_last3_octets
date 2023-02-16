@@ -75,7 +75,7 @@ args = parser.parse_args()
 signal.signal(signal.SIGINT, signal_handler)
 
 # Generate the last three octets
-print("[+] Generating octects ...
+print("[+] Generating octects ...")
 
 try:
     octets = generate_mac_last_three_octets()
