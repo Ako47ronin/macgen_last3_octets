@@ -32,7 +32,7 @@ banner = """
 ⠀⠀⠀⠀⠀⠀⠀⠸⠉⠈⠃⠿⠟⠉⢹⠟⠛⠻⡞⠿⠏⠀⠘⠄⠀⠉⠀⠀⠀⠀⠀⠀
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀        
 
-Password Generator v1.0
+MAC Last 3 Octect Generator v1.0
 Author: Ako
 Email : ako47ron at gmail.com
 """
